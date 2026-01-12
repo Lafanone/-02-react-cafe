@@ -2,7 +2,7 @@ import { useState } from 'react';
 import css from './App.module.css';
 import CafeInfo from '../cafeInfo/CafeInfo';
 import VoteOptions from '../voteOptions/VoteOptions';
-import { Votes, VoteType } from '../types/votes';
+import type { Votes, VoteType } from '../../components/types/votes';
 
 const App = () => {
   const [votes, setVotes] = useState<Votes>({
