@@ -27,9 +27,9 @@ const App = () => {
     });
   };
   
-  const totalFeedback = votes.good + votes.neutral + votes.bad;
+  const totalVotes = votes.good + votes.neutral + votes.bad;
 
-  const positivePercentage = totalFeedback > 0 ? Math.round((votes.good / totalFeedback) * 100) : 0;
+  const positiveRate = totalVotes ? Math.round((votes.good / totalVotes) * 100) : 0;
 
 
   return (
@@ -38,13 +38,13 @@ const App = () => {
       <VoteOptions 
         onVote={handleVote} 
         onReset={resetVotes} 
-        canReset={totalFeedback > 0} 
+        canReset={totalVotes > 0} 
       />
-      {totalFeedback > 0 ? (
+      {totalVotes > 0 ? (
         <VoteStats 
           votes={votes}
-          totalVotes={totalFeedback}
-          positiveRate={positivePercentage}
+          totalVotes={totalVotes}
+          positiveRate={positiveRate}
         />
       ) : (
           <p>No feedback yet</p>
