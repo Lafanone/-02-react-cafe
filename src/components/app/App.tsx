@@ -2,6 +2,7 @@ import { useState } from 'react';
 import css from './App.module.css';
 import CafeInfo from '../cafeInfo/CafeInfo';
 import VoteOptions from '../voteOptions/VoteOptions';
+import VoteStats from '../voteStats/VoteStats';
 import type { Votes, VoteType } from '../../components/types/votes';
 
 const App = () => {
@@ -28,6 +29,9 @@ const App = () => {
   
   const totalFeedback = votes.good + votes.neutral + votes.bad;
 
+  const positivePercentage = totalFeedback > 0 ? Math.round((votes.good / totalFeedback) * 100) : 0;
+
+
   return (
     <div className={css.app}>
       <CafeInfo /> 
@@ -36,6 +40,15 @@ const App = () => {
         onReset={resetVotes} 
         canReset={totalFeedback > 0} 
       />
+      {totalFeedback > 0 ? (
+        <VoteStats 
+          votes={votes}
+          totalVotes={totalFeedback}
+          positiveRate={positivePercentage}
+        />
+      ) : (
+          <p>No feedback yet</p>
+      )}
     </div>
   );
 };
