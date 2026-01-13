@@ -3,6 +3,7 @@ import css from './App.module.css';
 import CafeInfo from '../cafeInfo/CafeInfo';
 import VoteOptions from '../voteOptions/VoteOptions';
 import VoteStats from '../voteStats/VoteStats';
+import Notification from '../notification/Notification';
 import type { Votes, VoteType } from '../../components/types/votes';
 
 const App = () => {
@@ -28,13 +29,12 @@ const App = () => {
   };
   
   const totalVotes = votes.good + votes.neutral + votes.bad;
-
   const positiveRate = totalVotes ? Math.round((votes.good / totalVotes) * 100) : 0;
-
 
   return (
     <div className={css.app}>
       <CafeInfo /> 
+      
       <VoteOptions 
         onVote={handleVote} 
         onReset={resetVotes} 
@@ -47,7 +47,7 @@ const App = () => {
           positiveRate={positiveRate}
         />
       ) : (
-          <p>No feedback yet</p>
+          <Notification />
       )}
     </div>
   );
