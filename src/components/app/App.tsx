@@ -4,7 +4,7 @@ import CafeInfo from '../cafeInfo/CafeInfo';
 import VoteOptions from '../voteOptions/VoteOptions';
 import VoteStats from '../voteStats/VoteStats';
 import Notification from '../notification/Notification';
-import type { Votes, VoteType } from '../../components/types/votes';
+import type { Votes, VoteType } from '../../types/votes';
 
 const App = () => {
   const [votes, setVotes] = useState<Votes>({
